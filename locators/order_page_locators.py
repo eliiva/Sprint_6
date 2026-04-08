@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 order_header = [By.CLASS_NAME, "Order_Header__BZXOb"]
+samokat_logo = [By.CLASS_NAME, 'Header_LogoScooter__3lsAR']
 firstname_input = [By.XPATH, ".//input[@placeholder='* Имя']"]
 lastname_input = [By.XPATH, ".//input[@placeholder='* Фамилия']"]
 address_input = [By.XPATH, ".//input[@placeholder='* Адрес: куда привезти заказ']"]

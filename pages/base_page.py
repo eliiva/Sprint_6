@@ -1,24 +1,24 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from locators.base_page_locators import samokat_logo, yandex_logo, header_order_button
 import allure
 
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
-    @allure.step('Дожидаемся загрузки страницы')
-    def wait_for_load_base_page(self):
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(samokat_logo))
+    @allure.step('Дожидаемся загрузки элемента на странице')
+    def wait_for_load_element(self, element_locator):
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(element_locator))
 
-    @allure.step('Кликаем на логотим Самоката')
-    def click_samokat_logo(self):
-        self.driver.find_element(*samokat_logo).click()
+    @allure.step('Кликаем по элементу')
+    def click_page_element(self, element_locator):
+        self.driver.find_element(*element_locator).click()
 
-    @allure.step('Кликаем на логотип Яндекса')
-    def click_yandex_logo(self):
-        self.driver.find_element(*yandex_logo).click()
+    @allure.step('Пролистываем страницу до нужного элемента')
+    def scroll_page_to_element(self, element_locator):
+        element = self.driver.find_element(*element_locator)
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
 
-    @allure.step('Кликаем на кнопку Заказать')
-    def click_order_button(self):
-        self.driver.find_element(*header_order_button).click()
+    @allure.step('Указываем имя')
+    def fill_input(self, input_locator, value):
+        self.driver.find_element(*input_locator).send_keys(value)

@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 
+header_order_button = [By.XPATH, ".//div[@class='Header_Nav__AGCXC']/button[text()='Заказать']"]
+yandex_logo = [By.CLASS_NAME, 'Header_LogoYandex__3TSOI']
 page_order_button = [By.XPATH, ".//div[@class='Home_FinishButton__1_cWm']/button[text()='Заказать']"]
 page_header = [By.CLASS_NAME, "Home_Header__iJKdX"]
 price_question_block = [By.XPATH, ".//div[@class='accordion']/div[@class='accordion__item'][1]"]

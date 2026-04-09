@@ -46,7 +46,7 @@ class TestCreateOrder:
         order_page.click_agree_button()
         order_page.wait_for_status_block_load()
 
-        assert "Заказ оформлен" in self.driver.find_element(*order_modal_header).text
+        assert "Заказ оформлен" in order_page.get_element_text(order_modal_header)
 
     @allure.title('Проверка создания заказа через кнопку Заказать на главной')
     @allure.description('Создаём заказ через кнопку Заказать на главной и проверяем всплывающее окно с сообщением об успехе')
@@ -79,7 +79,7 @@ class TestCreateOrder:
         order_page.click_agree_button()
         order_page.wait_for_status_block_load()
 
-        assert "Заказ оформлен" in self.driver.find_element(*order_modal_header).text    
+        assert "Заказ оформлен" in order_page.get_element_text(order_modal_header)  
         
     @classmethod
     def teardown_class(cls):

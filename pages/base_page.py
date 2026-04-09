@@ -1,5 +1,6 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import allure
 
 class BasePage:
@@ -22,3 +23,17 @@ class BasePage:
     @allure.step('Указываем имя')
     def fill_input(self, input_locator, value):
         self.driver.find_element(*input_locator).send_keys(value)
+
+    @allure.step('Получаем текст элемента')
+    def get_element_text(self, element_locator):
+        return self.driver.find_element(*element_locator).text
+    
+    @allure.step('Получаем текущий урл страницы')
+    def get_current_url(self):
+        return self.driver.current_url
+    
+    @allure.step('Переключаемся на новую вкладку')
+    def switch_to_new_tab(self, new_tab_url):
+        tabs = self.driver.window_handles
+        self.driver.switch_to.window(tabs[-1])
+        WebDriverWait(self.driver, 10).until(EC.url_contains(new_tab_url))

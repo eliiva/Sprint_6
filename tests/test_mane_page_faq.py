@@ -25,7 +25,7 @@ class TestMainPage:
         main_page.wait_for_load_main_page()
         main_page.click_question_block(question_locator)
 
-        assert self.driver.find_element(*answer_locator).text == answer_text
+        assert main_page.get_element_text(answer_locator) == answer_text
         
     @classmethod
     def teardown_class(cls):
